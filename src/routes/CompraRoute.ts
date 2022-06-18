@@ -5,5 +5,6 @@ const router = Router()
 
 router.route('/compra')
   .get(CompraController.testing)
+  .post(CompraController.comprar)
 
 export default router
