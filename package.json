@@ -1,0 +1,15 @@
+{
+  "name": "via_varejo",
+  "version": "1.0.0",
+  "description": "simular a compra de um produto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
+  }
+}
