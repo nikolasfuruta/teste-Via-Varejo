@@ -6,4 +6,11 @@ export default class CompraController {
     const result = CompraService.testing()
     res.status(200).send({ message: result })
   }
+
+  // public static async comprar(req: Request, res: Response) {
+  //   const info = req.body
+  //   try{
+  //     const result = await CompraService.comprar(info)
+  //   } catch (e) {}
+  // }
 }
