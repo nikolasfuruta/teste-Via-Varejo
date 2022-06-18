@@ -8,15 +8,7 @@ export default class CompraService {
   public static async comprar (produto: any, condicaoPagamento: any): Promise<any> {
     try {
       const result = await juros(produto, condicaoPagamento)
-      const valorFinal = result.valorFinal
-      const taxa = result.taxa
-      return [
-        {
-          numeroParcela: condicaoPagamento.qtdeParcelas,
-          valor: valorFinal,
-          taxaJurosAoMes: taxa
-        }
-      ]
+      return result
     } catch (e) {
       console.error(e)
       return { message: 'Erro' }
