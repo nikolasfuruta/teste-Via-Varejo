@@ -5,5 +5,10 @@ export default class App {
 
   constructor () {
     this.init = express()
+    this.mid()
+  }
+
+  mid () {
+    this.init.use(express.json())
   }
 }
