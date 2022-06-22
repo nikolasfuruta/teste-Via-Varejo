@@ -1,3 +1,4 @@
+import { Juros, PagamentoData, ProdutoData } from '../util/interfaces'
 import juros from '../util/juros'
 
 export default class CompraService {
@@ -5,13 +6,12 @@ export default class CompraService {
     return 'success'
   }
 
-  public static async comprar (produto: any, condicaoPagamento: any): Promise<any> {
+  public static async comprar (produto: ProdutoData, condicaoPagamento: PagamentoData): Promise<Juros[] | Error> {
     try {
       const result = await juros(produto, condicaoPagamento)
       return result
     } catch (e) {
-      console.error(e)
-      return { message: 'Erro' }
+      throw new Error('AxiosError')
     }
   }
 }
