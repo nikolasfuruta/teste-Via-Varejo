@@ -13,6 +13,14 @@ export default async function juros (produto: ProdutoData, condicaoPagamento: Pa
   }
 }
 
+export function taxaMensal (arrayData: AxiosData[]): number {
+  let taxaMensal = 0
+  for (let i = 0; i < arrayData.length; i++) {
+    taxaMensal += Number(arrayData[i].valor)
+  }
+  return Number(taxaMensal.toFixed(2))
+}
+
 export function calcularJuros (taxaMensal: number, produto: ProdutoData, condicaoPagamento: PagamentoData): Juros[] {
   const valor = Number(produto.valor)
   const entrada = Number(condicaoPagamento.valorEntrada)
@@ -33,12 +41,4 @@ export function calcularJuros (taxaMensal: number, produto: ProdutoData, condica
     }
   }
   return valorFinal
-}
-
-export function taxaMensal (arrayData: AxiosData[]): number {
-  let taxaMensal = 0
-  for (let i = 0; i < arrayData.length; i++) {
-    taxaMensal += Number(arrayData[i].valor)
-  }
-  return Number(taxaMensal.toFixed(2))
 }
