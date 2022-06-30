@@ -1,0 +1,114 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Teste Via Varejo",
+    "description": "API para simular a compra de um produto parcelando seu valor"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/swagger",
+      "description": "Rota para testar o funcionamento da API"
+    }
+  ],
+  "paths": {
+    "/compra": {
+      "post": {
+        "summary": "compra do produto",
+        "description": "compra do produto com o valor parcelado",
+        "tags": [
+          "Compra"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Compra"
+              },
+              "examples": {
+                "compra": {
+                  "value": {
+                    "produto": {
+                      "codigo": 123,
+                      "nome": "Produto Teste",
+                      "valor": 14000
+                    },
+                    "condicaoPagamento": {
+                      "valorEntrada": 7000,
+                      "qtdeParcelas": 7
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#/components/schemas/Resposta"
+                  }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Compra": {
+        "type": "object",
+        "properties": {
+          "produto": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "number"
+              },
+              "nome": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number"
+              }
+            }
+          },
+          "condicaoPagamento": {
+            "type": "object",
+            "properties": {
+              "valorEntrada": {
+                "type": "number"
+              },
+              "qtdeParcelas": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "Resposta": {
+        "type": "object",
+        "properties": {
+          "numeroParcela": {
+            "type": "number"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "taxaJurosAoMes": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

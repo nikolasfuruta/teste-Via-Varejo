@@ -1,5 +1,7 @@
 import express, { Express, Router } from 'express'
 import router from '../routes/CompraRoute'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDoc from '../swagger.json'
 
 export default class App {
   init: Express
@@ -13,5 +15,6 @@ export default class App {
 
   mid () {
     this.init.use(express.json())
+    this.init.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
   }
 }
